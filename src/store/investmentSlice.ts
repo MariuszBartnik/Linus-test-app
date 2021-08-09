@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Project {
-    id: string,
+    id: number,
     name: string,
     location: string
 }
@@ -16,7 +16,7 @@ export interface InvestmentState {
 
 const initialState: InvestmentState = {
     project: {
-        id: '',
+        id: 0,
         name: '',
         location: ''
     },

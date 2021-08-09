@@ -1,22 +1,23 @@
 import React from 'react';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ProjectSelectionScreen from './views/ProjectSelectionScreen';
+import InvestmentScreen from './views/InvestmentScreen';
+import ConfirmationScreen from './views/ConfirmationScreen';
+import {store} from './store/store';
+import {Provider} from 'react-redux';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router>
+            <Switch>
+              <Route path="/confirm" component={ConfirmationScreen}/>
+              <Route path="/project" component={InvestmentScreen}/>
+              <Route path="/" component={ProjectSelectionScreen}/>
+            </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }

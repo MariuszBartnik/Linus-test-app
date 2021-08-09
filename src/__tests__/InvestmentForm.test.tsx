@@ -2,13 +2,35 @@ import React from 'react';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import InvestmentForm from '../components/InvestmentForm';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 
 describe('Information Form Component ', () => {
     const mockedHandler = jest.fn();
 
+    let store;
+    const mockedData = {
+        project: {
+            id: 1,
+            name: 'Road renovation',
+            location: 'Warsaw'
+        },
+        email: 'test@test.com',
+        amount : 20000
+    }
+    const mockedStore = configureStore([]);
+
     beforeEach(() => {
-        render(<InvestmentForm handleSubmit={mockedHandler} />)
-    })
+        store = mockedStore({
+            investment: mockedData
+        })
+
+        render(
+            <Provider store={store} >
+                <InvestmentForm handleSubmit={mockedHandler} />)
+            </Provider>
+        )
+    });
 
     test('should render with disabled button', () => {
         expect(screen.queryByRole('button')).toBeDisabled();

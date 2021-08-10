@@ -105,3 +105,27 @@ button:disabled{
   height: 1rem;
   margin: 0 .7rem;
 }
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-dialog{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: #f4f4f4;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.modal-dialog button{
+  margin-top: 2rem;
+}
